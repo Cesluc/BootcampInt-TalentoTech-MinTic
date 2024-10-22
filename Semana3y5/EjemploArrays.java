@@ -35,7 +35,7 @@ public class EjemploArrays {
             suma += numero;
         }
 
-        System.out.println("Suma: " + suma);
+        // System.out.println("Suma: " + suma);
 
         int [] numeros2 = {5, 3, 8, 1, 9, 2};
 
@@ -65,7 +65,32 @@ public class EjemploArrays {
         //     System.out.println(numero);
         // }
 
-        System.out.println(Arrays.toString(numeros3));
+        // System.out.println(Arrays.toString(numeros3));
+
+        // imprimir arreglos
+        int[] numeros4 = {1,2,3};
+        System.out.println(Arrays.toString(numeros4));
+
+        //Ordenamiento
+        int [] numeros5 = {3,2,1};
+        Arrays.sort(numeros5);
+        System.out.println(Arrays.toString(numeros5));
+
+        // Busqueda del index
+        int index = Arrays.binarySearch(numeros5, 2);
+        System.out.println(index);
+
+        //igualdad
+        int[] numeros6 = { 1, 2, 3 };
+        System.out.println(Arrays.equals(numeros4, numeros6));
+
+        // Lenado
+        int [] numeros7 = new int [5];
+        Arrays.fill(numeros7, 1);
+        System.out.println(Arrays.toString(numeros7));
+
+        int[] numeros8 = Arrays.copyOf(numeros6, 5);
+        System.out.println(Arrays.toString(numeros8));
 
     }
 }
