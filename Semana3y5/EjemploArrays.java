@@ -91,6 +91,7 @@ public class EjemploArrays {
 
         int[] numeros8 = Arrays.copyOf(numeros6, 5);
         System.out.println(Arrays.toString(numeros8));
+        
 
     }
 }
