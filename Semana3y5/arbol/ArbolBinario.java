@@ -1,30 +1,30 @@
 package arbol;
 
 public class ArbolBinario {
-    
+    // Arbol de busqueda binaria.
 
     Nodo raiz;
 
     public void agregar(String nombre, int cantidad){
-        if (raiz == null) {
-            raiz = new Nodo(nombre, cantidad);
-        }else{
-            agregarRecursivo(raiz,nombre,cantidad);
-        }
+        // Primero funciona luego refactorizamos.
+        raiz = agregarRecursivo(raiz,nombre,cantidad);
     }
 
-    private void agregarRecursivo(Nodo actual, String nombre, int cantidad) {
-        if (actual.izquierdo == null) {
-            actual.izquierdo = new Nodo(nombre, cantidad);
-        } else if(actual.derecho == null){
-            actual.derecho = new Nodo(nombre, cantidad); 
+    private Nodo agregarRecursivo(Nodo actual, String nombre, int cantidad) {
+
+        if (actual == null) {
+            return new Nodo(nombre, cantidad);
+        } 
+
+        if (nombre.compareToIgnoreCase(actual.nombre) < 0) {
+            actual.izquierdo = agregarRecursivo(actual.izquierdo, nombre, cantidad);
+        } else if (nombre.compareToIgnoreCase(actual.nombre) > 0) {
+            actual.derecho =agregarRecursivo(actual.derecho, nombre, cantidad);
         } else {
-            if (Math.random() < 0.5) {
-                agregarRecursivo(actual.izquierdo, nombre, cantidad);
-            } else {
-                agregarRecursivo(actual.derecho, nombre, cantidad);
-            }
-        }
+            actual.cantidad += cantidad;
+        } 
+
+        return actual;
     }
 
     public Nodo buscar(String nombre){
@@ -32,21 +32,16 @@ public class ArbolBinario {
     }
 
     private Nodo buscarRecursivo(Nodo actual, String nombre) {
-        if (actual == null) {
-            return null;
-        }
-
-        if (nombre.equals(actual.nombre)) {
+    //  unifificar la condicion de base
+        if (actual == null || nombre.equalsIgnoreCase(actual.nombre)) {
             return actual;
         }
 
-        Nodo izquierdo = buscarRecursivo(actual.izquierdo, nombre);
-        if (izquierdo != null) {
-            return izquierdo;
+        if (nombre.compareToIgnoreCase(actual.nombre)<0) {
+            return buscarRecursivo(actual.izquierdo, nombre);
+        } else {
+            return buscarRecursivo(actual.derecho, nombre);
         }
-
-        return buscarRecursivo(actual.derecho, nombre);
-
     }
 
     public void listar(){
@@ -63,6 +58,7 @@ public class ArbolBinario {
 
     public boolean eliminar(String nombre, int cantidad){
         Nodo nodo = buscar(nombre);
+
         if (nodo != null) {
             if (nodo.cantidad > cantidad) {
                 nodo.cantidad -= cantidad;
@@ -80,7 +76,7 @@ public class ArbolBinario {
             return null;
         }
 
-        if(nombre.equals(actual.nombre)){
+        if(nombre.equalsIgnoreCase(actual.nombre)){
             if (actual.izquierdo == null && actual.derecho == null) {
                 return null;
             }
@@ -93,28 +89,30 @@ public class ArbolBinario {
                 return actual.derecho;
             }
 
-            String menor = buscarMenor(actual.derecho);
-            actual.nombre = menor;
-            actual.derecho = eliminarRecursivo(actual.derecho, menor);
+            Nodo sucesor = buscarMenor(actual.derecho);
+            actual.nombre = sucesor.nombre;
+            actual.cantidad = sucesor.cantidad;
+            actual.derecho = eliminarRecursivo(actual.derecho, sucesor.nombre);
 
             return actual;
             
         }
 
-        if (nombre.compareTo(actual.nombre) < 0) {
+        if (nombre.compareToIgnoreCase(actual.nombre) < 0) {
             actual.izquierdo = eliminarRecursivo(actual.izquierdo, nombre);
+        } else {
+            actual.derecho = eliminarRecursivo(actual.derecho, nombre);
         }
 
-        actual.derecho = eliminarRecursivo(actual.derecho, nombre);
         return actual;
     }
 
-    private String buscarMenor(Nodo nodo) {
+    private Nodo buscarMenor(Nodo nodo) {
         while (nodo.izquierdo != null) {
             nodo = nodo.izquierdo;
         }
 
-        return nodo.nombre;
+        return nodo;
     }
     
 
