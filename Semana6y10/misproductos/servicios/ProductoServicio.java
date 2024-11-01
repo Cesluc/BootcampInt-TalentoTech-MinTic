@@ -1,5 +1,6 @@
 package servicios;
 
+import java.util.Date;
 import java.util.List;
 
 import dao.CategoriaDao;
@@ -57,7 +58,17 @@ public class ProductoServicio {
     }
 
     public VentaModelo crearVenta(int productoId, int cantidad) {
-        return null;
+
+        ProductoModelo productoModelo = productoDao.obtenerConID(productoId); 
+        // Validar si existe el id 
+
+        if (productoModelo != null && productoModelo.getCantidad() >= cantidad) {
+            return new VentaModelo(cantidad, new Date(), productoModelo);
+        } else {
+            System.out.println("Producto no encontrado o cantidad insuficiente");
+            return null;
+        }
+
     }
 
     public void realizarTransaccion(List<VentaModelo> ventaModelosList) {

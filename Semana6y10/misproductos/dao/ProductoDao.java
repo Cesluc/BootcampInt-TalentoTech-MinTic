@@ -3,7 +3,6 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +81,35 @@ public class ProductoDao {
 
         return productoModelosList;
 
+    }
+
+    public ProductoModelo obtenerConID(int productoId) {
+        String seleccionarProductoSql = "SELECT * FROM productos WHERE id = ?";
+
+        ProductoModelo productoModelo = null;
+
+        try (Connection connection = ConexionBD.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(seleccionarProductoSql)) {
+
+            stmt.setInt(1, productoId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                productoModelo = new ProductoModelo(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getDouble("precio"),
+                        rs.getInt("cantidad"),
+                        null
+                );
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Error al obtener el id del producto", e);
+        }
+
+        return productoModelo;
     }
     
 }

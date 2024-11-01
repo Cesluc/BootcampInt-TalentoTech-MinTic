@@ -8,8 +8,7 @@ public class VentaModelo {
     private Date fecha;
     private ProductoModelo productoModelo;
     
-    public VentaModelo(int id, int cantidad, Date fecha, ProductoModelo productoModelo) {
-        this.id = id;
+    public VentaModelo( int cantidad, Date fecha, ProductoModelo productoModelo) {
         this.cantidad = cantidad;
         this.fecha = fecha;
         this.productoModelo = productoModelo;
