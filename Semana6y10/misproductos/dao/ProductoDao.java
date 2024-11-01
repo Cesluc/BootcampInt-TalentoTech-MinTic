@@ -2,8 +2,13 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import modelos.CategoriaModelo;
 import modelos.ProductoModelo;
 import utiles.ConexionBD;
 import utiles.DatabaseException;
@@ -43,6 +48,40 @@ public class ProductoDao {
         } catch (SQLException e) {
             throw new DatabaseException("Error al insertar el producto", e);
         }
+    }
+
+    public List<ProductoModelo> obtenerProductosConJoin() {
+
+        String seleccionarProductoSql = "SELECT p.id, p.nombre, p.precio, p.cantidad, p.categoria_id, c.nombre AS categoria " +
+                                        "FROM productos p " +
+                                        "INNER JOIN categorias c " + 
+                                        "ON p.categoria_id = c.id " +
+                                        "ORDER BY p.nombre";
+
+        List<ProductoModelo> productoModelosList = new ArrayList<>();
+
+        try (Connection connection = ConexionBD.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(seleccionarProductoSql);
+                ResultSet rs = stmt.executeQuery()) {
+            
+            while (rs.next()) {
+                ProductoModelo productoModelo = new ProductoModelo(
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getDouble("precio"),
+                    rs.getInt("cantidad"),
+                    new CategoriaModelo(rs.getInt("categoria_id"), rs.getString("categoria"))
+                );
+
+                productoModelosList.add(productoModelo );
+            }
+
+                } catch (SQLException e) {
+            throw new DatabaseException("Error al obtener el producto", e);
+        }
+
+        return productoModelosList;
+
     }
     
 }

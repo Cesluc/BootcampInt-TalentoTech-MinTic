@@ -49,6 +49,11 @@ public class ProductoServicio {
 
     public void mostrarProductosConJoin() {
 
+        List<ProductoModelo> productoModelosList = productoDao.obtenerProductosConJoin();
+        for (ProductoModelo productoModelo : productoModelosList) {
+            System.out.println(productoModelo.getId() + ": " + productoModelo.getNombre() + " - " + productoModelo.getPrecio() + " - " + productoModelo.getCantidad());
+        }
+
     }
 
     public VentaModelo crearVenta(int productoId, int cantidad) {
