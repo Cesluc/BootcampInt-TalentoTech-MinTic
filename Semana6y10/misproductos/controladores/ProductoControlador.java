@@ -14,7 +14,7 @@ public class ProductoControlador {
 
     public void iniciar() {
         while (true) {
-            System.out.println("\nCrear Tablas e insertar datos");
+            System.out.println("\n1. Crear Tablas e insertar datos");
             System.out.println("2. Mostrar productos con JOIN");
             System.out.println("3. Realizar transacción");
             System.out.println("4. Mostrar productos con GROUP BY y HAVING");
