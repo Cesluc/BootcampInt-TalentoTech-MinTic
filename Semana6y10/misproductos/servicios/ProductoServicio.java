@@ -31,13 +31,13 @@ public class ProductoServicio {
     public void insertarDatos() {
         try {
             categoriaDao.insertar("Electronica");
-            categoriaDao.insertar("Mueblas");
+            categoriaDao.insertar("Muebles");
             categoriaDao.insertar("Ropa");
 
-            productoDao.insertar(new ProductoModelo("PC", 1000.00, 10, categoriaDao.obtenerNombre("Electronica")));
-            productoDao.insertar(new ProductoModelo("Tablet", 500.00, 15, categoriaDao.obtenerNombre("Electronica")));
-            productoDao.insertar(new ProductoModelo("Sofa", 300.00, 5, categoriaDao.obtenerNombre("Muebles")));
-            productoDao.insertar(new ProductoModelo("Camiseta", 20.00, 50, categoriaDao.obtenerNombre("Ropa")));
+            productoDao.insertar(new ProductoModelo("PC", 1200.00, 10, categoriaDao.obtenerConNombre("Electronica")));
+            productoDao.insertar(new ProductoModelo("Tablet", 400.00, 15, categoriaDao.obtenerConNombre("Electronica")));
+            productoDao.insertar(new ProductoModelo("Sofa", 300.00, 5, categoriaDao.obtenerConNombre("Muebles")));
+            productoDao.insertar(new ProductoModelo("Camiseta", 20.00, 50, categoriaDao.obtenerConNombre("Ropa")));
         
 
             System.out.println("Datos insertados");

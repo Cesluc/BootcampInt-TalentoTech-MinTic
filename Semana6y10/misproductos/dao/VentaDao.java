@@ -10,7 +10,7 @@ import utiles.DatabaseException;
 public class VentaDao {
 
     public void crearTabla() {
-        String crearTablaSql = "CREATE TABLE IF NOT EXIST ventas(" +
+        String crearTablaSql = "CREATE TABLE IF NOT EXISTS ventas(" +
                                 "id INT AUTO_INCREMENT PRIMARY KEY," +
                                 "cantidad INT,"  +
                                 "fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +                         
