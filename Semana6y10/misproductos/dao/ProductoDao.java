@@ -9,6 +9,7 @@ import java.util.List;
 
 import modelos.CategoriaModelo;
 import modelos.ProductoModelo;
+import modelos.VentaModelo;
 import utiles.ConexionBD;
 import utiles.DatabaseException;
 
@@ -111,5 +112,40 @@ public class ProductoDao {
 
         return productoModelo;
     }
+
+    public void realizarTransaccion(List<VentaModelo> ventaModelosList) {
+
+        try (Connection connection= ConexionBD.getConnection()) {
+            // En la base de datos el commit esta automatico, por eso lo hacemos aca 
+            connection.setAutoCommit(false); 
+
+            try {
+                for (VentaModelo ventaModelo : ventaModelosList) {
+                    actualizarCantidad(ventaModelo.getProductoModelo().getId(), ventaModelo.getCantidad(), connection);
+                    VentaDao.registrarVenta(ventaModelo, connection);
+                }
+
+                connection.commit();
+            } catch (SQLException e) {
+                connection.rollback();
+            }
+
+        } catch (SQLException e) {
+            throw new DatabaseException("Error durante la transaccion", e);
+        }
+    }
     
+    private void actualizarCantidad(int id, int cantidad, Connection connection) {
+        String actualizarCantidad="UPDATE productos SET cantidad= cantidad - ? WHERE id = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(actualizarCantidad)) {
+
+            stmt.setInt(1, cantidad);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DatabaseException("Error al actualizar la cantidad", e);
+        }
+
+    }
 }

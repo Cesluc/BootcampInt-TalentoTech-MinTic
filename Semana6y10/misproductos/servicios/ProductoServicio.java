@@ -72,7 +72,14 @@ public class ProductoServicio {
     }
 
     public void realizarTransaccion(List<VentaModelo> ventaModelosList) {
-
+        System.out.println("Iniciar transacción");
+        try {
+            
+            productoDao.realizarTransaccion(ventaModelosList);
+            System.out.println("Transaccion finalizada");
+        } catch (DatabaseException e) {
+            System.out.println("Error durante la transacción: " + e.getMessage());
+        }
     }
 
     public void mostrarProductosConGroupByHaving() {
