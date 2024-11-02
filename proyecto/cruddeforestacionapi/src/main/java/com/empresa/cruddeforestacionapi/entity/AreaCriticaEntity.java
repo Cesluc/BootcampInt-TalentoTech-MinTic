@@ -29,7 +29,7 @@ public class AreaCriticaEntity {
 
     @NotNull
     @Column(nullable = false)
-    @Size( min =2, max = 100)
+    @Size( min = 10, max = 500)
     private String descripcion;
 
     @NotNull
@@ -46,7 +46,7 @@ public class AreaCriticaEntity {
     @OneToMany(mappedBy = "areaCriticaEntity", cascade = CascadeType.ALL) // Para hacer la relacion con evaluaciones ferroviarias
     private List<EvaluacionFerroviariaEntity> evaluacionFerroviariaEntities;
 
-    
+
     public Long getId() {
         return id;
     }
