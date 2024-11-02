@@ -25,7 +25,7 @@ public class EvaluacionFerroviariaEntity {
     @NotNull
     @Column(nullable = false)
     @Size( min = 2, max = 200)
-    private String nnombreRuta;
+    private String nombreRuta;
 
     @NotNull
     @Column(nullable = false)
@@ -52,11 +52,11 @@ public class EvaluacionFerroviariaEntity {
     }
 
     public String getNnombreRuta() {
-        return nnombreRuta;
+        return nombreRuta;
     }
 
     public void setNnombreRuta(String nnombreRuta) {
-        this.nnombreRuta = nnombreRuta;
+        this.nombreRuta = nnombreRuta;
     }
 
     public String getInformeViabilidad() {
