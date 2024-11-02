@@ -1,12 +1,5 @@
 import java.util.Scanner;
 
-/*
-* Recomendaciones Generales:
-*
-*    -> El método run() funcionará como nuestro método principal
-*    -> No declarar objetos de tipo Scanner, utilizar el método read() para solicitar datos al usuario.
-*    -> Si requiere utilizar varias clases, estas NO deben ser tipo public.
-*/
 class RetoI2 {
 
     /**
