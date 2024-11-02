@@ -6,4 +6,6 @@ public class Main {
         ProductoControlador productoControlador = new ProductoControlador();
         productoControlador.iniciar();
     }
+    // 1.19.38: Clase Síncrona Ejercicios prácticos SQL
+
 }
