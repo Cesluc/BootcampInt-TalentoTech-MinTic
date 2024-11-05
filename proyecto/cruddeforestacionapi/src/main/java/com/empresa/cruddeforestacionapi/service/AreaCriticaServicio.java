@@ -40,6 +40,13 @@ public class AreaCriticaServicio {
     }
 
     public AreaCriticaDTO crearAreaCritica(AreaCriticaDTO areaCriticaDTO) {
+
+        // AreaCriticaEntity areaCriticaEntity = areaCriticaRepositorio.findById(areaCriticaDTO.getId()).orElseThrow(() -> new RecursoNoEncontradoExcepcion("Area critica no encontrada"));
+
+        // if (!areaCriticaRepositorio.existsById(areaCriticaDTO.getId())) {
+        //     throw new RecursoNoEncontradoExcepcion("Area critica no encontrada");
+        // }
+
         AreaCriticaEntity areaCriticaEntity = convertirEntity(areaCriticaDTO);
         AreaCriticaEntity areaCriticaEntityCreada = areaCriticaRepositorio.save(areaCriticaEntity); 
         return convertirDTO(areaCriticaEntityCreada);
