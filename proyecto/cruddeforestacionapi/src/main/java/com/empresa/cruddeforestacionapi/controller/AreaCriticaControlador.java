@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.empresa.cruddeforestacionapi.dto.AreaCriticaDTO;
 import com.empresa.cruddeforestacionapi.service.AreaCriticaServicio;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController // Crearemos un servicio web RESTFUL
 @RequestMapping("/api/areas-criticas")
@@ -34,6 +38,18 @@ public class AreaCriticaControlador {
         AreaCriticaDTO areaCriticaDTO = areaCriticaServicio.obtenerAreaCriticaPorId(id);
 
         return ResponseEntity.ok(areaCriticaDTO);
+    }
+
+    @PostMapping
+    public AreaCriticaDTO crearAreaCritica(@RequestBody AreaCriticaDTO areaCriticaDTO) {
+        
+        return areaCriticaServicio.crearAreaCritica(areaCriticaDTO);
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<AreaCriticaDTO> actualizarAreaCriticaPorID (@PathVariable Long id, @RequestBody AreaCriticaDTO areaCriticaDTO) {
+        AreaCriticaDTO AreaCriticaDTOActualizada = areaCriticaServicio.actualizarAreaCriticaPorId(id,areaCriticaDTO);
+        return ResponseEntity.ok(AreaCriticaDTOActualizada);
     }
 
 }

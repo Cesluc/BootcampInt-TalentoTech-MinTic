@@ -39,6 +39,25 @@ public class AreaCriticaServicio {
         return convertirDTO(areaCriticaEntity);
     }
 
+    public AreaCriticaDTO crearAreaCritica(AreaCriticaDTO areaCriticaDTO) {
+        AreaCriticaEntity areaCriticaEntity = convertirEntity(areaCriticaDTO);
+        AreaCriticaEntity areaCriticaEntityCreada = areaCriticaRepositorio.save(areaCriticaEntity); 
+        return convertirDTO(areaCriticaEntityCreada);
+    }
+
+    public AreaCriticaDTO actualizarAreaCriticaPorId(Long id, AreaCriticaDTO areaCriticaDTO) {
+        AreaCriticaEntity areaCriticaEntity = areaCriticaRepositorio.findById(id).orElseThrow(() -> new RecursoNoEncontradoExcepcion("Area critica no encontrada") );
+        // Se mapea solamente lo que se necesita,
+        areaCriticaEntity.setNombre(areaCriticaDTO.getNombre());
+        areaCriticaEntity.setDescripcion(areaCriticaDTO.getDescripcion());
+        areaCriticaEntity.setLatitud(areaCriticaDTO.getLatitud());
+        areaCriticaEntity.setLongitud(areaCriticaDTO.getLongitud());
+        areaCriticaEntity.setIndiceDeforestacion(areaCriticaDTO.getIndiceDeforestacion());
+
+        AreaCriticaEntity areacriticaEntityActualizada = areaCriticaRepositorio.save(areaCriticaEntity);
+        return convertirDTO(areacriticaEntityActualizada);
+    }
+
     //Aqui lo haremos manualmente, despues lo haremos con las librerias
 
     private AreaCriticaDTO convertirDTO(AreaCriticaEntity areaCriticaEntity){
