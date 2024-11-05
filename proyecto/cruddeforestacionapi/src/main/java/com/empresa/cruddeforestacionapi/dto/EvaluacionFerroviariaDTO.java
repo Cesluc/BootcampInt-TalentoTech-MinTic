@@ -8,7 +8,8 @@ public class EvaluacionFerroviariaDTO {
     private String nombreRuta;
     private String informeViabilidad;
     private LocalDateTime fechaEvaluacion;
-    private Long areaCriticaEntity;
+    private Long areaCriticaEntityId;
+    
     public Long getId() {
         return id;
     }
@@ -33,11 +34,11 @@ public class EvaluacionFerroviariaDTO {
     public void setFechaEvaluacion(LocalDateTime fechaEvaluacion) {
         this.fechaEvaluacion = fechaEvaluacion;
     }
-    public Long getAreaCriticaEntity() {
-        return areaCriticaEntity;
+    public Long getAreaCriticaEntityId() {
+        return areaCriticaEntityId;
     }
-    public void setAreaCriticaEntity(Long areaCriticaEntity) {
-        this.areaCriticaEntity = areaCriticaEntity;
+    public void setAreaCriticaEntityId(Long areaCriticaEntityId) {
+        this.areaCriticaEntityId = areaCriticaEntityId;
     }
 
     
