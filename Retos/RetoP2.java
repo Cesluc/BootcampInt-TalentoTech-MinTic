@@ -27,12 +27,31 @@ class RetoP2 {
      * método principal
      */
     public void run() {
-        /*
-         * solución propuesta
-         */
-    }
+        
+            int numeroComprasAnteriores = Integer.parseInt(read());
+            double montoCompraActual = Double.parseDouble(read());
 
-    public static void main(String[] args) {
+            double[] resultado = calcularDescuento(numeroComprasAnteriores,montoCompraActual);
+
+            System.out.printf("%.1f\n%.2f\n%.2f", resultado[0], resultado[1], resultado[2]);
+            
+        }
+
+
+            
+        public double[] calcularDescuento(int numeroComprasAnteriores, double montoCompraActual) {
+            
+            double descuentoBase = 5.0;
+
+            double descuentoAdicional = Math.min(numeroComprasAnteriores * 2.0, 15);
+
+            double montoDescuento= montoCompraActual * (descuentoBase + descuentoAdicional)/100;
+
+            return new double[]{descuentoBase, descuentoAdicional, montoDescuento};
+        }
+
+            
+            public static void main(String[] args) {
         RetoP2 retoP2 = new RetoP2();
         retoP2.run();
     }

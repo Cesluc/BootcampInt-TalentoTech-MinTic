@@ -34,7 +34,7 @@ class RetoP1 {
         
         System.out.println(cantidadPalabras);
         System.out.println(cantidadPalabrasUnicas);
-        System.out.println(promedioCantidadPalabras);
+        System.out.printf("%.2f",promedioCantidadPalabras);
 
     }
 
