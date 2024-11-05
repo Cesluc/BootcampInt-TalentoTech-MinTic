@@ -58,6 +58,11 @@ public class AreaCriticaServicio {
         return convertirDTO(areacriticaEntityActualizada);
     }
 
+    public void eliminarAreaCriticaPorId(Long id) {
+        AreaCriticaEntity areaCriticaEntity = areaCriticaRepositorio.findById(id).orElseThrow(() -> new RecursoNoEncontradoExcepcion("Area critica no encontrada") );
+        areaCriticaRepositorio.delete(areaCriticaEntity);
+    }
+
     //Aqui lo haremos manualmente, despues lo haremos con las librerias
 
     private AreaCriticaDTO convertirDTO(AreaCriticaEntity areaCriticaEntity){
@@ -87,6 +92,8 @@ public class AreaCriticaServicio {
         return areaCriticaEntity;
 
     }
+
+
 
     
 
