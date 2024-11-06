@@ -42,7 +42,7 @@ public class EvaluacionFerroviariaEntity {
     private AreaCriticaEntity areaCriticaEntity;
 
 
-    // Los beans deben tener si o si getters y setters 
+    // Los beans deben tener si o si getters y setters
     public Long getId() {
         return id;
     }
@@ -51,12 +51,12 @@ public class EvaluacionFerroviariaEntity {
         this.id = id;
     }
 
-    public String getNnombreRuta() {
+    public String getNombreRuta() {
         return nombreRuta;
     }
 
-    public void setNnombreRuta(String nnombreRuta) {
-        this.nombreRuta = nnombreRuta;
+    public void setNombreRuta(String nombreRuta) {
+        this.nombreRuta = nombreRuta;
     }
 
     public String getInformeViabilidad() {
@@ -82,6 +82,9 @@ public class EvaluacionFerroviariaEntity {
     public void setAreaCriticaEntity(AreaCriticaEntity areaCriticaEntity) {
         this.areaCriticaEntity = areaCriticaEntity;
     }
+
+
+    
 
 
     

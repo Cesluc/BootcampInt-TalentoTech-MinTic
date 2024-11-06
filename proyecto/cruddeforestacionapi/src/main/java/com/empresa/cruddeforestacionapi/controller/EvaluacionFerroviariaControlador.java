@@ -2,7 +2,6 @@ package com.empresa.cruddeforestacionapi.controller;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.empresa.cruddeforestacionapi.dto.EvaluacionFerroviariaDTO;
 import com.empresa.cruddeforestacionapi.service.EvaluacionFerroviariaServicio;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,7 +26,7 @@ public class EvaluacionFerroviariaControlador {
     @Autowired
     private EvaluacionFerroviariaServicio evaluacionFerroviariaServicio;
 
-    @GetMapping("path")
+    @GetMapping
     public List<EvaluacionFerroviariaDTO> obtenerTodasEvaluacionFerroviarias() {
         return evaluacionFerroviariaServicio.obtenerTodasEvaluacionFerroviarias();
     }

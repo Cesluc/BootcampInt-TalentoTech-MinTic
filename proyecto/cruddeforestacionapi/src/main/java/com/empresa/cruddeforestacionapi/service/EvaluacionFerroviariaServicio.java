@@ -23,7 +23,6 @@ public class EvaluacionFerroviariaServicio {
     @Autowired
     private AreaCriticaRepositorio areaCriticaRepositorio;
 
-    @Autowired
     private final EvaluacionFerroviariaMapper mapper = EvaluacionFerroviariaMapper.INSTANCE;
 
     public List<EvaluacionFerroviariaDTO> obtenerTodasEvaluacionFerroviarias() {
@@ -49,7 +48,7 @@ public class EvaluacionFerroviariaServicio {
 
     public EvaluacionFerroviariaDTO actualizarEvaluacionFerroviariaPorIdString(Long id, EvaluacionFerroviariaDTO evaluacionFerroviariaDTO) {
         EvaluacionFerroviariaEntity evaluacionFerroviariaEntity = evaluacionFerroviariaRepositorio.findById(id).orElseThrow(() -> new RecursoNoEncontradoExcepcion("Evaluacion Ferroviaria no encontrada"));
-        evaluacionFerroviariaEntity.setNnombreRuta(evaluacionFerroviariaDTO.getNombreRuta());
+        evaluacionFerroviariaEntity.setNombreRuta(evaluacionFerroviariaDTO.getNombreRuta());
         evaluacionFerroviariaEntity.setInformeViabilidad(evaluacionFerroviariaDTO.getInformeViabilidad());
         evaluacionFerroviariaEntity.setFechaEvaluacion(evaluacionFerroviariaDTO.getFechaEvaluacion());
 
