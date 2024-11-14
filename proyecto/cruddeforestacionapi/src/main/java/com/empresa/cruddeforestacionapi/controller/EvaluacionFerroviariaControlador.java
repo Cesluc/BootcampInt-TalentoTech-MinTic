@@ -54,5 +54,13 @@ public class EvaluacionFerroviariaControlador {
         evaluacionFerroviariaServicio.eliminarEvaluacionFerroviariaPorId(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/insertar")
+    public ResponseEntity<Long> insertarEvaluacionFerroviariaDTO(
+            @RequestBody EvaluacionFerroviariaDTO evaluacionFerroviariaDTO) {
+
+        Long nuevoId = evaluacionFerroviariaServicio.insertarEvaluacionFerroviariaDTO(evaluacionFerroviariaDTO);
+        return ResponseEntity.ok(nuevoId);
+    }
     
 }

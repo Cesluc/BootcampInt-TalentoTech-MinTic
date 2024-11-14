@@ -1,6 +1,5 @@
 package com.empresa.cruddeforestacionapi.service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +13,10 @@ import com.empresa.cruddeforestacionapi.repository.AreaCriticaRepositorio;
 import com.empresa.cruddeforestacionapi.repository.EvaluacionFerroviariaRepositorio;
 import com.empresa.cruddeforestacionapi.util.EvaluacionFerroviariaMapper;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.ParameterMode;
+import jakarta.persistence.StoredProcedureQuery;
+
 @Service
 public class EvaluacionFerroviariaServicio {
 
@@ -22,6 +25,9 @@ public class EvaluacionFerroviariaServicio {
 
     @Autowired
     private AreaCriticaRepositorio areaCriticaRepositorio;
+
+        @Autowired
+    private EntityManager entityManager;
 
     private final EvaluacionFerroviariaMapper mapper = EvaluacionFerroviariaMapper.INSTANCE;
 
@@ -60,6 +66,29 @@ public class EvaluacionFerroviariaServicio {
     public void eliminarEvaluacionFerroviariaPorId(Long id) {
         EvaluacionFerroviariaEntity evaluacionFerroviariaEntity = evaluacionFerroviariaRepositorio.findById(id).orElseThrow(() -> new RecursoNoEncontradoExcepcion("Evaluacion Ferroviaria no encontrada"));
         evaluacionFerroviariaRepositorio.delete(evaluacionFerroviariaEntity);
+    }
+
+    public Long insertarEvaluacionFerroviariaDTO(EvaluacionFerroviariaDTO evaluacionFerroviariaDTO) {
+        if (!areaCriticaRepositorio.existsById(evaluacionFerroviariaDTO.getAreaCriticaEntityId())) {
+            throw new RecursoNoEncontradoExcepcion("Area critica no encontrada");
+        }
+
+        StoredProcedureQuery query = entityManager.createStoredProcedureQuery("insertar_evaluacion");
+
+        query.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(3, Long.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(4, Long.class, ParameterMode.OUT);
+
+        query.setParameter(1, evaluacionFerroviariaDTO.getNombreRuta());
+        query.setParameter(2, evaluacionFerroviariaDTO.getInformeViabilidad());
+        query.setParameter(3, evaluacionFerroviariaDTO.getAreaCriticaEntityId());
+
+        query.execute();
+
+        Long nuevoId = (Long) query.getOutputParameterValue(4) ;
+
+        return nuevoId;
     }
 
 
