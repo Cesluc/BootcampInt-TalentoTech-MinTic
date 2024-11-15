@@ -10,22 +10,209 @@
     <script src="./js/dinamico1.js"></script>
     <!-- <link rel="stylesheet" href="./css/normalize.css">  -->
     <link rel="stylesheet" href="./css/estilos.css">
-    <style>
-        h1{
-            background-color: aqua;
-        }
-    </style>
+
 </head>
 <body>
-    <h1>titulo es unico</h1>
-    <h2>titulos secciones</h2>
-    <h3>subtitulos</h3>
-    <h4>titulo</h4>
-    <h5>titulo</h5>
-    <h6>titulo</h6>
 
+    <header>
+        <h1>Titulo 1</h1>
+        <!-- <h2>titulos secciones</h2>
+        <h3>subtitulos</h3>
+        <h4>titulo</h4>
+        <h5>titulo</h5>
+        <h6>titulo</h6> -->
+    </header>
+    
+    <nav>
+        <ul>
+            <li> <a href="./pages/pagina2.html">ir a pagina 2</a></li>
+            <li> <a href="#textos">Textos y listas</a></li>
+            <li> <a href="#tablas">Tablas</a></li>
+            <li> <a href="#multimedia">Multimedia</a></li>
+            <li> <a href="#semantica">Semanticas y accesabilidad</a></li>
+            <li> <a href="#formulario">Formularios</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="textos">
+            <h2>Textos y listas</h2>
+            <p>El <strong>texto</strong> puede ser <em>enfatizado</em> de diferentes maneras, incluyendo <b>negrita</b> y <i>cursiva</i></p>
+            <ol>
+                <li>lista ordenada 1</li>
+                <li>lista ordenada 2</li>
+                <li>lista ordenada 3</li>
+            </ol>
 
-    <p style="color: blueviolet;">parrafo</p>
+            <dl>
+                <dt>HTML</dt>
+                <dd>Lenguaje de marcado de hipertexto</dd>
+                <dt>CSS</dt>
+                <dd>Hojas de estilos en casada</dd>
+            </dl>
+
+            <hr>
+
+            <blockquote>
+                cita para un texto importante
+                <br>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta quis, molestiae, dignissimos, minus necessitatibus recusandae officia nulla reprehenderit aut ab totam fuga eligendi quas assumenda soluta. Quidem obcaecati adipisci non.
+            </blockquote>
+
+            <pre>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                         Maxime sequi explicabo aut, voluptatum 
+                                    dignissimos aspernatur deserunt doloremque natus illo beatae modi quod perspiciatis et quisquam accusamus nulla repellendus officiis nisi.
+            </pre>
+        </section>
+
+        <section id="tablas">
+            <h2>Tablas</h2>
+
+            <table border="1">
+                <caption>Tabla de usuarios</caption>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>EMAIL</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Juan</td>
+                        <td>Juan@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Maria</td>
+                        <td>Maria@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Carlos</td>
+                        <td>Carlos@gmail.com</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Pie de tabla</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section id="multimedia">
+            <h2>Multimedia</h2>
+
+            <h3>Imagenes</h3>
+            <figure>
+                <img src="./img/gato.jpeg" alt="Imagen de un gato" width="500">
+            </figure>
+
+            <h3>Audio</h3>
+            <audio controls >
+                <source src="./audio/sonido1.mp3" type="audio/mp3">
+                Tu navegador no soporta el mp4
+            </audio>
+
+            <h3>Video</h3>
+            <video controls>
+                <source src="./video/video1.mp3" type="video/mp4">
+                Tu navegador no soporta el mp4
+            </video>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/MN4DQ_Vd0nE?si=KCzxhJtZMRogF0rS"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <br>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.3562893417588!2d-74.13037051786662!3d4.64526852572132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9c0b484fdb79%3A0x14aa4d9d70fb5f52!2sEl%20Eden%20Mall!5e0!3m2!1sen!2sco!4v1731637365906!5m2!1sen!2sco"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <section id="semantica">
+            <h2>Semanticas y accesabilidad</h2>
+
+            <article>
+                <header>
+                    <h3>titulo del articulo</h3>
+                </header>
+
+                <p> texto del articulo</p>
+
+                <footer>
+                    <p>pie del articulo</p>
+                </footer>
+            </article>
+
+            <div>
+
+                <aside>
+                    <h3> barra lateral 1</h3>
+                    <p>contenido de la barra lateral</p>
+                </aside>
+                <aside>
+                    <h3> barra lateral 2</h3>
+                    <p>contenido de la barra lateral</p>
+                </aside>
+            </div>
+        </section>
+
+        <section id="formulario">
+            <h2>Formularios</h2>
+
+            <form action="./js/dinamico1.js" method="post">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" value="Cesar" disabled>
+                <br>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password">
+                <br>
+                <input type="radio" id="masculino" name="genero" value="masculino">
+                <label for="radio"> Masculino</label>
+                <input type="radio" id="femenino" name="genero" value="femenino">
+                <label for="radio"> Femenino</label>
+                <input type="radio" id="otro" name="genero" value="otro">
+                <label for="radio"> Otro</label>
+                <br>
+                <label for="navegador">Navegador</label>
+                <select name="navegador" id="navegador">
+                    <option value="">Seleccione el navegador</option>
+                    <option value="firefox">Firefox</option>
+                    <option value="chrome">Chrome</option>
+                    <option value="safari">Safari</option>
+                </select>
+                <br>
+                <input type="checkbox" name="terminos" id="terminos" required>
+                <label for="terminos">Terminos y condiciones</label>
+                <br>
+
+                <input type="submit">
+            </form>
+
+<!-- 
+            <input type="checkbox">
+            <input type="color">
+            <input type="date">
+            <input type="email">
+            <input type="file">
+            <input type="hidden">
+            <input type="number">
+            <input type="password">
+            <input type="radio">
+            <input type="range"> -->
+        </section>
+
+    </main>
+    
+    <footer>
+        <p> 2024 mi pagina web. Todos los derechos reservados.</p>
+    </footer>
 
     <script>
         console.log("interno");
